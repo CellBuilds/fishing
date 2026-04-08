@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "skyblock-fishing",
+  "version": "${version}",
+  "name": "Skyblock Fishing",
+  "description": "Turbo Fishing auto-clicker + Fishing Counter HUD for Meteor Client.",
+  "authors": ["YourName"],
+  "contact": {},
+  "license": "GPL-3.0",
+  "environment": "client",
+  "entrypoints": {
+    "meteor": [
+      "com.skyblockfishing.SkyblockFishingAddon"
+    ]
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "meteor-client": "*"
+  }
+}
