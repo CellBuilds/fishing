@@ -47,8 +47,9 @@ public class FishingCounterHud extends HudElement {
     @Override
     public void render(HudRenderer renderer) {
         double s   = scale.get();
-        int    x   = (int) box.getX();
-        int    y   = (int) box.getY();
+        // Use box.x and box.y directly (public fields in Meteor's HudBox)
+        int    x   = (int) box.x;
+        int    y   = (int) box.y;
         int    w   = (int) (BASE_W * s);
         int    h   = (int) (BASE_H * s);
         int    pad = (int) (PADDING * s);
@@ -69,14 +70,13 @@ public class FishingCounterHud extends HudElement {
         int     secondsLeft = mod != null ? mod.turboSecondsRemaining() : 0;
         FishingTracker t    = FishingTracker.get();
 
-        row(renderer, tx, ty, s, "Fish Caught:",  String.valueOf(t.fishCaught));      ty += lh;
-        row(renderer, tx, ty, s, "Turbo Procs:",  String.valueOf(t.turboProcCount));  ty += lh;
+        row(renderer, tx, ty, s, "Fish Caught:",  String.valueOf(t.fishCaught));               ty += lh;
+        row(renderer, tx, ty, s, "Turbo Procs:",  String.valueOf(t.turboProcCount));            ty += lh;
         row(renderer, tx, ty, s, "XP Gained:",    FishingTracker.formatNumber(t.xpGained));    ty += lh;
         row(renderer, tx, ty, s, "Money Gained:", FishingTracker.formatNumber(t.moneyGained)); ty += lh;
 
-        // Turbo Active — green YES (18s) or red NO
         renderer.text("Turbo Active:", tx, ty, labelColor.get(), false, s);
-        int lw     = (int) renderer.textWidth("Turbo Active:", false, s);
+        int lw = (int) renderer.textWidth("Turbo Active:", false, s);
         String status = active ? "YES (" + secondsLeft + "s)" : "NO";
         renderer.text(status, tx + lw + (int)(4 * s), ty,
             active ? activeColor.get() : inactiveColor.get(), false, s);
