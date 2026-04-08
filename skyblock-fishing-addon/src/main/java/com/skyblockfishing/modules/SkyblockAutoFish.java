@@ -214,8 +214,8 @@ public class SkyblockAutoFish extends Module {
         for (int i = 0; i < turboPacketCount.get(); i++) {
             // 1.21.1 constructor: hand, sequence, yaw, pitch
             mc.getNetworkHandler().sendPacket(
-                new PlayerInteractItemC2SPacket(Hand.MAIN_HAND, 0, 0f, 0f)
-            );
+    new PlayerInteractItemC2SPacket(Hand.MAIN_HAND, 0, mc.player.getYaw(), mc.player.getPitch())
+);
         }
         if (swingArm.get())
             mc.getNetworkHandler().sendPacket(new HandSwingC2SPacket(Hand.MAIN_HAND));
