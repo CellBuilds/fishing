@@ -12,7 +12,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
       - name: Build
-        run: cd skyblock-fishing-addon && gradle build
+        run: cd skyblock-fishing-addon && chmod +x gradlew && ./gradlew build
       - name: Upload jar
         uses: actions/upload-artifact@v4
         with:
